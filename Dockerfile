@@ -29,13 +29,15 @@ RUN apt install -y --no-install-recommends \
 ENV CC=/usr/bin/gcc-12
 ENV CXX=/usr/bin/g++-12
 
+# Starting with newer nvcr.io/nvidia/pytorch theres a constraint.txt, so need to remove the ones that are in conflict with what we want
 RUN sed -i '/^torch==/d; /^pytorch-triton==/d; /^torchvision==/d; /^sympy==/d; /^packaging==/d; /^setuptools==/d; /^build==/d; /^cmake==/d; /^ninja==/d; /^pybind11==/d; /^wheel==/d' /etc/pip/constraint.txt && echo 'numpy==1.26.4' >> /etc/pip/constraint.txt
 # get rid of the nvidia fork of pytorch
-RUN pip uninstall -y torch torchvision torchaudio pytorch-triton triton
+RUN pip uninstall -y torch torchvision torchaudio pytorch-triton triton:w 
 RUN pip install -U torch torchvision torchaudio triton pytorch-triton --index-url https://download.pytorch.org/whl/cu128
 
 RUN pip install pynvml
 
+# Remove or add the dependencies you want
 RUN pip install accelerate==1.9.0 hf_transfer modelscope bitsandbytes timm boto3 runai-model-streamer runai-model-streamer[s3] tensorizer "transformers==4.52.4" nltk qwen_vl_utils radgraph codetiming datasets dill hydra-core pandas peft "pyarrow>=15.0.0" pybind11 pylatexenc torchdata wandb scikit-image==0.25.2 ensemble-boxes==1.0.9 torchxrayvision==1.3.5 pydicom==3.0.1 sentencepiece==0.2.0 faster-coco-eval==1.6.7 rouge-score==0.1.2 bert-score==0.3.13 radgraph==0.1.18 f1chexbert==0.0.2 torchmetrics==1.8.0 albumentations==2.0.8  sentence-transformers==5.0.0 numba==0.59.1 llvmlite==0.42.0 grpcio==1.62.1 protobuf==4.24.4 scikit_image==0.25.2 torchxrayvision==1.3.5 rouge_score==0.1.2 bert_score==0.3.13 f1chexbert==0.0.2
 
 COPY local-wheels /opt/local-wheels

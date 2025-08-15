@@ -1,7 +1,7 @@
 # verl-container
 
-build the wheels from 
-
+build the wheels from https://github.com/404RubberDuck/gh200-wheels
+TODO add the built wheels on github release
 
 ## Build container
 ```
