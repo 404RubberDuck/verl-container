@@ -36,7 +36,7 @@ RUN pip install -U torch torchvision torchaudio triton pytorch-triton --index-ur
 
 RUN pip install pynvml
 
-RUN pip install accelerate==1.9.0 hf_transfer modelscope bitsandbytes timm boto3 runai-model-streamer runai-model-streamer[s3] tensorizer "transformers==4.52.4" nltk qwen_vl_utils radgraph codetiming datasets dill hydra-core pandas peft "pyarrow>=15.0.0" pybind11 pylatexenc torchdata wandb
+RUN pip install accelerate==1.9.0 hf_transfer modelscope bitsandbytes timm boto3 runai-model-streamer runai-model-streamer[s3] tensorizer "transformers==4.52.4" nltk qwen_vl_utils radgraph codetiming datasets dill hydra-core pandas peft "pyarrow>=15.0.0" pybind11 pylatexenc torchdata wandb scikit-image==0.25.2 ensemble-boxes==1.0.9 torchxrayvision==1.3.5 pydicom==3.0.1 sentencepiece==0.2.0 faster-coco-eval==1.6.7 rouge-score==0.1.2 bert-score==0.3.13 radgraph==0.1.18 f1chexbert==0.0.2 torchmetrics==1.8.0 albumentations==2.0.8  sentence-transformers==5.0.0 numba==0.59.1 llvmlite==0.42.0 grpcio==1.62.1 protobuf==4.24.4 scikit_image==0.25.2 torchxrayvision==1.3.5 rouge_score==0.1.2 bert_score==0.3.13 f1chexbert==0.0.2
 
 COPY local-wheels /opt/local-wheels
 
