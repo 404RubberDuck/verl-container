@@ -32,7 +32,7 @@ ENV CXX=/usr/bin/g++-12
 # Starting with newer nvcr.io/nvidia/pytorch theres a constraint.txt, so need to remove the ones that are in conflict with what we want
 RUN sed -i '/^torch==/d; /^pytorch-triton==/d; /^torchvision==/d; /^sympy==/d; /^packaging==/d; /^setuptools==/d; /^build==/d; /^cmake==/d; /^ninja==/d; /^pybind11==/d; /^wheel==/d' /etc/pip/constraint.txt && echo 'numpy==1.26.4' >> /etc/pip/constraint.txt
 # get rid of the nvidia fork of pytorch
-RUN pip uninstall -y torch torchvision torchaudio pytorch-triton triton:w 
+RUN pip uninstall -y torch torchvision torchaudio pytorch-triton triton
 RUN pip install -U torch torchvision torchaudio triton pytorch-triton --index-url https://download.pytorch.org/whl/cu128
 
 RUN pip install pynvml
